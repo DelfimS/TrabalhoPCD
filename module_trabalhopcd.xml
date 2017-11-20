@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_trabalhopcd" default="compile.module.trabalhopcd">
+  <dirname property="module.trabalhopcd.basedir" file="${ant.file.module_trabalhopcd}"/>
+  
+  <property name="module.jdk.home.trabalhopcd" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.trabalhopcd" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.trabalhopcd" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.trabalhopcd" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="trabalhopcd.output.dir" value="${module.trabalhopcd.basedir}/out/production/TrabalhoPCD"/>
+  <property name="trabalhopcd.testoutput.dir" value="${module.trabalhopcd.basedir}/out/test/TrabalhoPCD"/>
+  
+  <path id="trabalhopcd.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="trabalhopcd.module.production.classpath">
+    <path refid="${module.jdk.classpath.trabalhopcd}"/>
+  </path>
+  
+  <path id="trabalhopcd.runtime.production.module.classpath">
+    <pathelement location="${trabalhopcd.output.dir}"/>
+  </path>
+  
+  <path id="trabalhopcd.module.classpath">
+    <path refid="${module.jdk.classpath.trabalhopcd}"/>
+    <pathelement location="${trabalhopcd.output.dir}"/>
+  </path>
+  
+  <path id="trabalhopcd.runtime.module.classpath">
+    <pathelement location="${trabalhopcd.testoutput.dir}"/>
+    <pathelement location="${trabalhopcd.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.trabalhopcd">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.trabalhopcd">
+    <patternset refid="excluded.from.module.trabalhopcd"/>
+  </patternset>
+  
+  <path id="trabalhopcd.module.sourcepath">
+    <dirset dir="${module.trabalhopcd.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.trabalhopcd" depends="compile.module.trabalhopcd.production,compile.module.trabalhopcd.tests" description="Compile module TrabalhoPCD"/>
+  
+  <target name="compile.module.trabalhopcd.production" depends="register.custom.compilers" description="Compile module TrabalhoPCD; production classes">
+    <mkdir dir="${trabalhopcd.output.dir}"/>
+    <javac2 destdir="${trabalhopcd.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.trabalhopcd}/javac">
+      <compilerarg line="${compiler.args.trabalhopcd}"/>
+      <bootclasspath refid="trabalhopcd.module.bootclasspath"/>
+      <classpath refid="trabalhopcd.module.production.classpath"/>
+      <src refid="trabalhopcd.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.trabalhopcd"/>
+    </javac2>
+    
+    <copy todir="${trabalhopcd.output.dir}">
+      <fileset dir="${module.trabalhopcd.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.trabalhopcd.tests" depends="register.custom.compilers,compile.module.trabalhopcd.production" description="compile module TrabalhoPCD; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.trabalhopcd" description="cleanup module">
+    <delete dir="${trabalhopcd.output.dir}"/>
+    <delete dir="${trabalhopcd.testoutput.dir}"/>
+  </target>
+</project>

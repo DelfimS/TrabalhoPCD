@@ -1,8 +1,6 @@
 package Client;
 
 
-import Utilities.News_File;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -17,17 +15,25 @@ import java.util.ArrayList;
 
 class Client_GUI {
     private JTextArea File_Text;
-    private DefaultListModel<News_File> Title_List;
+    private DefaultListModel<String> Title_List;
     private JList Title_Table;
 
     public void init(){
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                drawGUI();
+            }
+        });
+    }
+
+    private void drawGUI(){
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setSize(1000, 500);
         addElements(window);
         window.setVisible(true);
     }
-
 
     private void addElements(JFrame w) {
         w.setLayout(new BorderLayout());
@@ -38,7 +44,7 @@ class Client_GUI {
         Search.add(button);
         Search.add(search_bar);
         w.add(Search, BorderLayout.NORTH);
-        DefaultListModel<News_File> listModel = new DefaultListModel<>();
+        DefaultListModel<String> listModel = new DefaultListModel<>();
         this.Title_Table = new JList<>(listModel);
         this.Title_List = listModel;
         this.File_Text = new JTextArea();
@@ -56,7 +62,7 @@ class Client_GUI {
         addListeners(Title_Table,search_bar,button);
     }
     
-    private void addListeners(JList<News_File> list,JTextField tf,JButton b) {
+    private void addListeners(JList<String> list,JTextField tf,JButton b) {
     	list.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -79,16 +85,16 @@ class Client_GUI {
         });
     }
 
-    private void setFile_Text(News_File selected) {
-            File_Text.setText(selected.getTitle());
-            File_Text.append("\n\n");
-            File_Text.append(selected.getContent());
-            File_Text.setCaretPosition(0);
+    private void setFile_Text(String selected) {
+//            File_Text.setText(selected);
+//            File_Text.append("\n\n");
+//            File_Text.append(selected.getContent());
+//            File_Text.setCaretPosition(0);
     }
 
     
-    private void setTitle_List(ArrayList<News_File> list) {
-            for (News_File nf:list) {
+    private void setTitle_List(ArrayList<String> list) {
+            for (String nf:list) {
     			Title_List.addElement(nf);
     		}
     }

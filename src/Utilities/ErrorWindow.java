@@ -5,7 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ErrorWindow {
-    public ErrorWindow(String msg){
+
+    public static void errorWindow(String msg){
         JDialog frame=new  JDialog();
         frame.setSize(100,100);
         frame.setVisible(true);
@@ -14,8 +15,7 @@ public class ErrorWindow {
         frame.add(new JLabel(msg));
         frame.setLocation(400,500);
     }
-
     public static void main(String[] args) {
-        new ErrorWindow("Ola");
+        errorWindow("Ola");
     }
 }

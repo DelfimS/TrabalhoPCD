@@ -23,7 +23,7 @@ class ServerThread extends Thread{
             this.in=new ObjectInputStream(socket.getInputStream());
             this.out=new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException e) {
-            new ErrorWindow("Algo correu mal");
+        	 ErrorWindow.errorWindow("Algo Correu Mal");
         }
     }
 
@@ -31,7 +31,7 @@ class ServerThread extends Thread{
         try {
             out.writeObject(obj);
         } catch (IOException e) {
-            new ErrorWindow("Erro No Envio");
+        	 ErrorWindow.errorWindow("Algo Correu Mal");
         }
     }
 
@@ -40,9 +40,9 @@ class ServerThread extends Thread{
         try {
             obj=in.readObject();
         } catch (IOException e) {
-            new ErrorWindow("Falha a Ler");
+        	 ErrorWindow.errorWindow("Algo Correu Mal");
         } catch (ClassNotFoundException e) {
-            new ErrorWindow("Classe nao Reconhecida");
+        	 ErrorWindow.errorWindow("Algo Correu Mal");
         }
         return obj;
     }

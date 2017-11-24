@@ -1,6 +1,4 @@
-package Utilities;
-
-import Utilities.News_File;
+package Server;
 
 import javax.swing.*;
 import java.io.File;

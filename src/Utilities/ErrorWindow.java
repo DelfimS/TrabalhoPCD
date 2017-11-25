@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class ErrorWindow {
 
-    public static void errorWindow(String msg){
+    public static void init(String msg){
         JDialog frame=new  JDialog();
         frame.setSize(100,100);
         frame.setVisible(true);
@@ -16,6 +16,6 @@ public class ErrorWindow {
         frame.setLocation(400,500);
     }
     public static void main(String[] args) {
-        errorWindow("Ola");
+        init("Ola");
     }
 }

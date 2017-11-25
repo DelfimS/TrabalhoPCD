@@ -17,16 +17,22 @@ class Client_GUI {
     private JTextArea File_Text;
     private DefaultListModel<String> Title_List;
     private JList Title_Table;
+    private Client client;
+    private JTextField searchBar;
+
 
     public void init(){
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                addClientWorker();
                 drawGUI();
             }
         });
     }
-
+    private void addClientWorker(){
+       client = new Client(this).init();
+    }
     private void drawGUI(){
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -38,11 +44,11 @@ class Client_GUI {
     private void addElements(JFrame w) {
         w.setLayout(new BorderLayout());
         JButton button = new JButton("Search");
-        JTextField search_bar = new JTextField();
+        searchBar = new JTextField();
         JPanel Search = new JPanel();
         Search.setLayout(new GridLayout(1, 2));
         Search.add(button);
-        Search.add(search_bar);
+        Search.add(searchBar);
         w.add(Search, BorderLayout.NORTH);
         DefaultListModel<String> listModel = new DefaultListModel<>();
         this.Title_Table = new JList<>(listModel);
@@ -58,14 +64,20 @@ class Client_GUI {
         Text.add(scrollPaneTitle_table);
         Text.add(scrollPaneFile_Text);
         w.add(Text);
-        //fh.addFilesToList(listModel);
-        addListeners(Title_Table,search_bar,button);
+        addListeners(Title_Table,searchBar,button);
     }
     
     private void addListeners(JList<String> list,JTextField tf,JButton b) {
     	list.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        client.requestText(e.toString());
+
+                    }
+                });
             }
         });
     	tf.addKeyListener(new KeyListener() {
@@ -73,6 +85,12 @@ class Client_GUI {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_ENTER)
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        client.requestSearch(searchBar.getText());
+                    }
+                });
             }
             @Override
             public void keyReleased(KeyEvent e) {}
@@ -80,16 +98,20 @@ class Client_GUI {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        client.requestSearch(searchBar.getText());
+                    }
+                });
             }
         });
     }
 
     private void setFile_Text(String selected) {
-//            File_Text.setText(selected);
-//            File_Text.append("\n\n");
-//            File_Text.append(selected.getContent());
-//            File_Text.setCaretPosition(0);
+            File_Text.setText(selected);
+            File_Text.append("\n\n");
+            File_Text.append(selected);
+            File_Text.setCaretPosition(0);
     }
 
     

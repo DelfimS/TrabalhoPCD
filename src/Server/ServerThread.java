@@ -20,10 +20,11 @@ class ServerThread extends Thread{
 
     private void doConnections() {
         try {
-            this.in=new ObjectInputStream(socket.getInputStream());
             this.out=new ObjectOutputStream(socket.getOutputStream());
+            this.in=new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
-        	 ErrorWindow.errorWindow("Algo Correu Mal");
+            e.printStackTrace();
+        	 ErrorWindow.init("Algo Correu Mal");
         }
     }
 
@@ -31,19 +32,29 @@ class ServerThread extends Thread{
         try {
             out.writeObject(obj);
         } catch (IOException e) {
-        	 ErrorWindow.errorWindow("Algo Correu Mal");
+        	 ErrorWindow.init("Algo Correu Mal");
         }
     }
 
     Object read(){
         Object obj = null;
         try {
+            if(!socket.isClosed())
             obj=in.readObject();
         } catch (IOException e) {
-        	 ErrorWindow.errorWindow("Algo Correu Mal");
+            e.printStackTrace();
+        	 ErrorWindow.init("Algo Correu Mal");
         } catch (ClassNotFoundException e) {
-        	 ErrorWindow.errorWindow("Algo Correu Mal");
+            e.printStackTrace();
+        	 ErrorWindow.init("Algo Correu Mal");
         }
         return obj;
+    }
+
+    @Override
+    public void run() {
+        while (!interrupted()){
+            read();
+        }
     }
 }

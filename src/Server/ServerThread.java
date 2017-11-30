@@ -5,15 +5,18 @@ import Utilities.ErrorWindow;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 class ServerThread extends Thread{
     protected Socket socket;
     protected ServerSocket serverSocket;
     protected ObjectInputStream in;
     protected ObjectOutputStream out;
+    protected Server server;
 
-    ServerThread(Socket socket, ServerSocket serverSocket) {
+    ServerThread(Socket socket, ServerSocket serverSocket,Server server) {
         this.socket = socket;
+        this.server=server;
         this.serverSocket=serverSocket;
         doConnections();
     }
@@ -24,7 +27,6 @@ class ServerThread extends Thread{
             this.in=new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
-        	 ErrorWindow.init("Algo Correu Mal");
         }
     }
 
@@ -32,29 +34,36 @@ class ServerThread extends Thread{
         try {
             out.writeObject(obj);
         } catch (IOException e) {
-        	 ErrorWindow.init("Algo Correu Mal");
+        	 e.printStackTrace();
         }
     }
 
     Object read(){
         Object obj = null;
         try {
-            if(!socket.isClosed())
             obj=in.readObject();
         } catch (IOException e) {
+            destroyThread();
             e.printStackTrace();
-        	 ErrorWindow.init("Algo Correu Mal");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        	 ErrorWindow.init("Algo Correu Mal");
         }
         return obj;
     }
 
+    private void destroyThread() {
+        server.removeThread(this);
+        this.interrupt();
+    }
+
     @Override
     public void run() {
-        while (!interrupted()){
-            read();
+        String tipo;
+        String request;
+        while (!isInterrupted()){
+            tipo=(String)read();
+            request=(String)read();
+            server.createTask(tipo,request);
         }
     }
 }

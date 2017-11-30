@@ -14,12 +14,16 @@ import java.util.ArrayList;
 
 
 class Client_GUI {
+    private JFrame frame;
     private JTextArea File_Text;
     private DefaultListModel<String> Title_List;
     private JList Title_Table;
     private Client client;
     private JTextField searchBar;
 
+    public JFrame getFrame() {
+        return frame;
+    }
 
     public void init(){
         SwingUtilities.invokeLater(new Runnable() {
@@ -31,10 +35,11 @@ class Client_GUI {
         });
     }
     private void addClientWorker(){
-       client = new Client(this).init();
+        client = new Client(this).init();
     }
     private void drawGUI(){
         JFrame window = new JFrame();
+        this.frame=window;
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setSize(1000, 500);
         addElements(window);
@@ -88,7 +93,7 @@ class Client_GUI {
                 if(e.getKeyCode()==KeyEvent.VK_ENTER)
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        client.requestSearch(searchBar.getText());
+                        System.out.println("Search Requested");client.requestSearch(searchBar.getText());
                     }
                 });
             }
@@ -100,7 +105,7 @@ class Client_GUI {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        client.requestSearch(searchBar.getText());
+                        System.out.println("Search Requested");client.requestSearch(searchBar.getText());
                     }
                 });
             }

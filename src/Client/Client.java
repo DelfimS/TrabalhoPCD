@@ -17,15 +17,17 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
     private ObjectInputStream in;
     private boolean running;
     private Client_GUI GUI;
+    private boolean searchLock=false;
 
     Client(Client_GUI GUI){
         this.GUI=GUI;
     }
+
     Client init(){
         try {
             connectToServer();
         } catch (IOException e) {
-            ErrorWindow.init("Algo correu mal a ligar ao server");
+            ErrorWindow.init("Algo correu mal a ligar ao server",GUI.getFrame());
         }
         return this;
     }
@@ -40,13 +42,13 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
         this.in=new ObjectInputStream(socket.getInputStream());
     }
 
-    void requestSearch(String search){
+    synchronized void requestSearch(String search){
         try {
             out.writeObject("search");
             out.writeObject(search);
         } catch (IOException e) {
             e.printStackTrace();
-            ErrorWindow.init("Falha no envio");
+            ErrorWindow.init("Falha no envio",GUI.getFrame());
         }
     }
 
@@ -55,7 +57,7 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
             out.writeObject("getText");
             out.writeObject(title);
         } catch (IOException e) {
-            ErrorWindow.init("Falha no envio");
+            ErrorWindow.init("Falha no envio",GUI.getFrame());
         }
     }
 	@Override
@@ -76,6 +78,6 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
     }
 
     private void readList() throws IOException, ClassNotFoundException {
-            ArrayList<String> list=(ArrayList<String>)in.readObject();
+        ArrayList<String> list=(ArrayList<String>)in.readObject();
     }
 }

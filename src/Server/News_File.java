@@ -32,7 +32,7 @@ public class News_File implements Comparable<News_File>{
 		this.content = content;
 	}
 
-	public String getContent() {
+	private String getContent() {
         return content;
     }
 

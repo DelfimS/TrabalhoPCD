@@ -1,40 +1,28 @@
 package Server;
 
-import Utilities.ErrorWindow;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 
-class ServerThread extends Thread{
+class ReceiverThread extends Thread{
+    protected int id;
     protected Socket socket;
     protected ServerSocket serverSocket;
     protected ObjectInputStream in;
-    protected ObjectOutputStream out;
     protected Server server;
 
-    ServerThread(Socket socket, ServerSocket serverSocket,Server server) {
+    ReceiverThread(Socket socket, Server server, int id) {
         this.socket = socket;
         this.server=server;
-        this.serverSocket=serverSocket;
+        this.id =id;
         doConnections();
     }
 
     private void doConnections() {
         try {
-            this.out=new ObjectOutputStream(socket.getOutputStream());
             this.in=new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    void send(Object obj){
-        try {
-            out.writeObject(obj);
-        } catch (IOException e) {
-        	 e.printStackTrace();
         }
     }
 
@@ -52,9 +40,10 @@ class ServerThread extends Thread{
     }
 
     private void destroyThread() {
-        server.removeThread(this);
+        server.removeThread(this.id);
         this.interrupt();
     }
+
 
     @Override
     public void run() {
@@ -63,6 +52,7 @@ class ServerThread extends Thread{
         while (!isInterrupted()){
             tipo=(String)read();
             request=(String)read();
+            if (tipo.equals("search"))
             server.createTask(tipo,request);
         }
     }

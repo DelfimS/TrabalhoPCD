@@ -5,25 +5,16 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 class ReceiverThread extends Thread{
-    protected int id;
-    protected Socket socket;
-    protected ServerSocket serverSocket;
+    private int id;
+    private Socket socket;
     protected ObjectInputStream in;
-    protected Server server;
+    private Server server;
 
-    ReceiverThread(Socket socket, Server server, int id) {
+    ReceiverThread(Socket socket, Server server, int id,ObjectInputStream in) {
+        this.in=in;
         this.socket = socket;
         this.server=server;
         this.id =id;
-        doConnections();
-    }
-
-    private void doConnections() {
-        try {
-            this.in=new ObjectInputStream(socket.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     Object read(){

@@ -4,6 +4,8 @@ package Server;
 
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -24,7 +26,13 @@ public class Server {
     synchronized void removeThread(int i) {
         for (IOThreads io :
                 connections) {
-            if (io.id == i)connections.remove(io);
+            if (io.id == i){
+                try {
+                    io.socket.close();
+                } catch (IOException ignored) {
+                }
+                connections.remove(io);
+            }
         }
     }
 
@@ -70,7 +78,12 @@ public class Server {
             }
 
             private void createServerThreads(Socket socket,int id) {
-                IOThreads st = new IOThreads(socket,true,id);
+                IOThreads st;
+                try {
+                    st = new IOThreads(socket,id);
+                } catch (InstantiationException e) {
+                    return;
+                }
                 addThread(st);
                 st.init();
             }
@@ -80,13 +93,31 @@ public class Server {
         private ReceiverThread in;
         private SenderThread out;
         private boolean workerOrClient;
-        public int id;
+        int id;
+        private Socket socket;
 
-        IOThreads(Socket socket,boolean type,int id){
-            out=new SenderThread(socket,server,id);
-            in=new ReceiverThread(socket,server,id);
-            workerOrClient=type;
+        IOThreads(Socket socket,int id) throws InstantiationException {
+            this.socket=socket;
             this.id=id;
+            ObjectOutputStream outputStream = null;
+            ObjectInputStream inputStream = null;
+            String test = null;
+            try {
+                outputStream=new ObjectOutputStream(socket.getOutputStream());
+                inputStream=new ObjectInputStream(socket.getInputStream());
+                test=(String)inputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            if(test.equals("Client")){
+                workerOrClient=true;
+            }else if (test.equals("Worker")){
+                workerOrClient=false;
+            }else {
+                throw new InstantiationException();
+            }
+            out=new SenderThread(socket,server,id,outputStream);
+            in=new ReceiverThread(socket,server,id,inputStream);
         }
 
         void init(){

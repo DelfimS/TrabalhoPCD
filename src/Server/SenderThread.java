@@ -9,24 +9,23 @@ public class SenderThread extends Thread{
     protected ObjectOutputStream out;
     protected Server server;
     private  int id;
+    protected Object toSend;
 
-    SenderThread(Socket socket, Server server, int id) {
+    SenderThread(Socket socket, Server server, int id,ObjectOutputStream out) {
         this.socket = socket;
         this.server=server;
         this.id = id;
-        doConnections();
+        this.out=out;
     }
 
-    private void doConnections() {
+
+    void send(Object object){
         try {
-            this.out=new ObjectOutputStream(socket.getOutputStream());
+            out.writeObject(object);
         } catch (IOException e) {
+            destroyThread();
             e.printStackTrace();
         }
-    }
-
-    void send(){
-
     }
 
     private void destroyThread() {
@@ -34,13 +33,16 @@ public class SenderThread extends Thread{
         this.interrupt();
     }
 
+    public void setToSend(Object toSend) {
+        this.toSend = toSend;
+    }
 
     @Override
     public void run() {
         while (true){
             try {
                 wait();
-                send();
+                send(toSend);
             } catch (InterruptedException e) {
                 break;
             }

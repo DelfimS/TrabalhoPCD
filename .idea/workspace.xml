@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14b65f3e-0a01-4cea-bf36-75a9bbf08ac9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Server/Threads/ReceiverThreadClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Server/Threads/ReceiverThreadWorker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Server/Threads/SenderThreadClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Server/Threads/SenderThreadWorker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Worker/Worker_Main.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Server/File_Handler.java" afterPath="$PROJECT_DIR$/src/Server/ServerUtil/File_Handler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Server/News_File.java" afterPath="$PROJECT_DIR$/src/Server/DataTypes/News_File.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Server/ReceiverThread.java" afterPath="$PROJECT_DIR$/src/Server/Threads/ReceiverThread.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Server/SenderThread.java" afterPath="$PROJECT_DIR$/src/Server/Threads/SenderThread.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Server/Tarefa.java" afterPath="$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/News_File.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/News_File.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server$ConnectionMaker.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server$ConnectionMaker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Tarefa$tipo.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Tarefa$tipo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Tarefa.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Tarefa.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Client.java" afterPath="$PROJECT_DIR$/src/Client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Server.java" afterPath="$PROJECT_DIR$/src/Server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Worker/Worker.java" afterPath="$PROJECT_DIR$/src/Worker/Worker.java" />
-    </list>
+    <list default="true" id="14b65f3e-0a01-4cea-bf36-75a9bbf08ac9" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -152,7 +131,7 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
+            <state relative-caret-position="646">
               <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
               <folding />
             </state>
@@ -1122,7 +1101,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
+        <state relative-caret-position="646">
           <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
           <folding />
         </state>

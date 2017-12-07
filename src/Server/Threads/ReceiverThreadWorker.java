@@ -27,13 +27,8 @@ public class ReceiverThreadWorker extends ReceiverThread {
 
     @Override
     public void run() {
-        String tipo;
-        String request;
         while (!isInterrupted()){
-            tipo=(String)read();
-            request=(String)read();
-            if (tipo.equals("search"))
-                server.createTask(tipo,request);
+            read();
         }
     }
 }

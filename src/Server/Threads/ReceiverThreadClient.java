@@ -33,7 +33,7 @@ public class ReceiverThreadClient extends ReceiverThread {
         while (!isInterrupted()){
             tipo=(String)read();
             request=(String)read();
-            server.createTask(tipo,request);
+            server.createTask(tipo,request,getIdentity());
         }
     }
 }

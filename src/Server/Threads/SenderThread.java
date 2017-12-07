@@ -1,4 +1,6 @@
-package Server;
+package Server.Threads;
+
+import Server.Server;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -11,7 +13,7 @@ public class SenderThread extends Thread{
     private  int id;
     protected Object toSend;
 
-    SenderThread(Socket socket, Server server, int id,ObjectOutputStream out) {
+    public SenderThread(Socket socket, Server server, int id, ObjectOutputStream out) {
         this.socket = socket;
         this.server=server;
         this.id = id;
@@ -21,6 +23,11 @@ public class SenderThread extends Thread{
 
     void send(Object object){
         try {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
             out.writeObject(object);
         } catch (IOException e) {
             destroyThread();
@@ -28,7 +35,7 @@ public class SenderThread extends Thread{
         }
     }
 
-    private void destroyThread() {
+    void destroyThread() {
         server.removeThread(this.id);
         this.interrupt();
     }
@@ -40,12 +47,7 @@ public class SenderThread extends Thread{
     @Override
     public void run() {
         while (true){
-            try {
-                wait();
-                send(toSend);
-            } catch (InterruptedException e) {
-                break;
-            }
+            send(toSend);
         }
     }
 }

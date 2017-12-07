@@ -40,6 +40,7 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
         }
         this.out=new ObjectOutputStream(socket.getOutputStream());
         this.in=new ObjectInputStream(socket.getInputStream());
+        out.writeObject("Client");
     }
 
     synchronized void requestSearch(String search){

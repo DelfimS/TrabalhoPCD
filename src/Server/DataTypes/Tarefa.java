@@ -1,17 +1,22 @@
-package Server;
+package Server.DataTypes;
+
+import Server.DataTypes.News_File;
+import Server.Server;
 
 public class Tarefa {
     private String request;
     private Enum tipo;
     private News_File news_file;
+    private int requesterId;
     private boolean done=false;
     public enum tipo{
         SEARCH,GET_TEXT
     }
-    Tarefa(Enum<tipo> tipo,String request,News_File news_file){
+    public Tarefa(Enum<tipo> tipo, String request, News_File news_file,int id){
         this.tipo=tipo;
         this.request=request;
         this.news_file=news_file;
+        requesterId=id;
     }
 
     public String getRequest() {
@@ -44,5 +49,13 @@ public class Tarefa {
 
     public void setNews_file(News_File news_file) {
         this.news_file = news_file;
+    }
+
+    public int getRequesterId() {
+        return requesterId;
+    }
+
+    public void setRequesterId(int requesterId) {
+        this.requesterId = requesterId;
     }
 }

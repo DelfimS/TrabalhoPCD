@@ -17,13 +17,15 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Server {
     public static final int PORT = 8080;
     protected final ArrayList<News_File> repository = File_Handler.getFiles("..\\TrabalhoPCD\\news29out");
     private ArrayList<IOThreads> connections = new ArrayList<>();
-   // private BlockingQueue<Tarefa> tasks = new BlockingQueue<>();
+    private BlockingQueue<Tarefa> tasks= new LinkedBlockingQueue<>();
     private Server server = this;
 
     void init() {
@@ -48,11 +50,11 @@ public class Server {
         connections.add(ioThreads);
     }
 
-    public synchronized void createTask(String tipo, String request) {
+    public void createTask(String tipo, String request,int id) {
         if (tipo.equals("search")) {
             assert repository != null;
             for (News_File news_file : repository) {
-                //tasks.add(new Tarefa(Tarefa.tipo.SEARCH, request, news_file));
+                tasks.offer(new Tarefa(Tarefa.tipo.SEARCH, request, news_file,id));
             }
         }
     }

@@ -25,6 +25,17 @@ class Client_GUI {
         return frame;
     }
 
+    public DefaultListModel<String> getTitle_List() {
+        return Title_List;
+    }
+
+    public JTextArea getFile_Text() {
+        return File_Text;
+    }
+
+    {
+    }
+
     public void init(){
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -36,6 +47,7 @@ class Client_GUI {
     }
     private void addClientWorker(){
         client = new Client(this).init();
+        client.execute();
     }
     private void drawGUI(){
         JFrame window = new JFrame();

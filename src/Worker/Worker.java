@@ -14,7 +14,6 @@ public class Worker extends Thread{
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-    private boolean running;
 
 
     Worker init(){
@@ -61,6 +60,7 @@ public class Worker extends Thread{
         while (sc.findInLine(searchWord) != null) {
             count++;
         }
+        sc.close();
         return count;
     }
 }

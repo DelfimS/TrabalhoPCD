@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class News_File implements Comparable<News_File>{
     private String content="";
     private String title="";
-    private int encontrados=0;
 
     public News_File(File f){
         try {
@@ -41,27 +40,19 @@ public class News_File implements Comparable<News_File>{
     }
 
     public String toString(){
-        if(encontrados!=0)return (encontrados+"-"+this.title);
-        return "=>"+this.title;
-        		
+
+        return this.title+" "+this.content;
+
     }
     
     public String getSearchText() {
     	return this.title+" "+this.getContent();
     }
 
-	public int getEncontrados() {
-		return encontrados;
-	}
-
-	public void setEncontrados(int encontrados) {
-		this.encontrados = encontrados;
-	}
-
 	@Override
-	public int compareTo(News_File o) {
-        return o.getEncontrados()-this.encontrados;
-	}
+    public int compareTo(News_File o) {return 1;
+            //o.getEncontrados()-this.encontrados;
+         }
 
 
 }

@@ -10,14 +10,15 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Client extends SwingWorker<ArrayList<String>, String>{
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-    private boolean running;
+    private boolean running=true;
     private Client_GUI GUI;
-    private boolean searchLock=false;
+
 
     Client(Client_GUI GUI){
         this.GUI=GUI;
@@ -45,8 +46,11 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
 
     synchronized void requestSearch(String search){
         try {
-            out.writeObject("search");
+            GUI.getTitle_List().clear();
+            out.writeObject("Search");
+            out.flush();
             out.writeObject(search);
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
             ErrorWindow.init("Falha no envio",GUI.getFrame());
@@ -55,8 +59,11 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
 
     void requestText(String title){
         try{
-            out.writeObject("getText");
+            out.flush();
+            out.writeObject("GetText");
+            out.flush();
             out.writeObject(title);
+            out.flush();
         } catch (IOException e) {
             ErrorWindow.init("Falha no envio",GUI.getFrame());
         }
@@ -66,6 +73,7 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
         while (running){
             String s=(String) in.readObject();
             if (s.equals("list")){
+                System.out.println("lista recebida");
                 readList();
             }else{
                 readText();
@@ -74,11 +82,21 @@ public class Client extends SwingWorker<ArrayList<String>, String>{
 		return null;
 	}
 
+    @Override
+    protected void process(List<String> chunks) {
+        GUI.getTitle_List().addElement(String.valueOf(chunks));
+    }
+
     private void readText() throws IOException, ClassNotFoundException {
         String s=(String)in.readObject();
+        publish(s);
     }
 
     private void readList() throws IOException, ClassNotFoundException {
         ArrayList<String> list=(ArrayList<String>)in.readObject();
+        for (String str:list) {
+            System.out.println(str);
+            publish(str);
+        }
     }
 }

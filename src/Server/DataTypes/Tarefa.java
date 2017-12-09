@@ -5,15 +5,10 @@ import Server.Server;
 
 public class Tarefa {
     private String request;
-    private Enum tipo;
     private News_File news_file;
     private int requesterId;
     private boolean done=false;
-    public enum tipo{
-        SEARCH,GET_TEXT
-    }
-    public Tarefa(Enum<tipo> tipo, String request, News_File news_file,int id){
-        this.tipo=tipo;
+    public Tarefa(String request, News_File news_file,int id){
         this.request=request;
         this.news_file=news_file;
         requesterId=id;
@@ -25,14 +20,6 @@ public class Tarefa {
 
     public void setRequest(String request) {
         this.request = request;
-    }
-
-    public Enum getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Enum tipo) {
-        this.tipo = tipo;
     }
 
     public boolean isDone() {

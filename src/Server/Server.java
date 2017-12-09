@@ -21,7 +21,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Server {
     public static final int PORT = 8080;
-    protected final ArrayList<News_File> repository = File_Handler.getFiles("..\\TrabalhoPCD\\news29out");
+    private final ArrayList<News_File> repository = File_Handler.getFiles("..\\TrabalhoPCD\\news29out");
     private ArrayList<ServerThread> connections = new ArrayList<>();
     private BlockingQueue<Tarefa> tasks= new LinkedBlockingQueue<>();
     private Server server = this;
@@ -35,7 +35,7 @@ public class Server {
         connections.remove(thread);
     }
 
-    synchronized void addThread(ServerThread thread){
+    private synchronized void addThread(ServerThread thread){
         connections.add(thread);
     }
 

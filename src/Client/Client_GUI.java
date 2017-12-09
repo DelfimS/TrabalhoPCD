@@ -83,15 +83,17 @@ public class Client_GUI {
     	list.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                client.requestText(list.getSelectedValue(),Client_GUI.this);
-                try {
-                    client.readText();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
+                if (Client_GUI.this.Title_Table.getSelectedValue()!=null) {
+                    client.requestText(Client_GUI.this.Title_Table.getSelectedValue().toString(),Client_GUI.this);
+                    try {
+                        client.readText();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    } catch (ClassNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
+                    File_Text.setCaretPosition(0);
                 }
-                File_Text.setCaretPosition(0);
             }
         });
     	tf.addKeyListener(new KeyListener() {

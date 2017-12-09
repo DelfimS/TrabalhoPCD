@@ -61,6 +61,7 @@ public class ConnectionHandler {
             GUI.getTitle_List().clear();
             RequestMessage rm=new RequestMessage("search",search);
             out.writeObject(rm);
+            out.flush();
             //new GetSearchListWorker(this).execute();
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,6 +74,7 @@ public class ConnectionHandler {
             String [] strings=title.split("=>");
             RequestMessage rm=new RequestMessage("text",strings[1]);
             out.writeObject(rm);
+            out.flush();
             //new GetTextFromTitle(this).execute();
         } catch (IOException e) {
             ErrorWindow.init("Falha no envio", GUI.getFrame());
@@ -86,10 +88,13 @@ public class ConnectionHandler {
 
     protected List<String> readList() throws IOException, ClassNotFoundException {
         ArrayList<String> list=(ArrayList<String>)this.getIn().readObject();
+        this.getGUI().getTitle_List().clear();
+        boolean b= this.getGUI().getTitle_List().isEmpty();
         for (String str:list) {
             System.out.println(str);
             this.getGUI().getTitle_List().addElement(str);
         }
+        System.out.println(list.size());
         return list;
     }
 }

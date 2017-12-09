@@ -35,6 +35,10 @@ public class News_File implements Comparable<News_File>{
         return content;
     }
 
+    public String getShowText(){
+        return title+"\n\n"+content;
+    }
+
     public void setTitle(String s){
         this.title=s;
     }

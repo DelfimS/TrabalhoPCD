@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import DataTransferType.RequestMessage;
 import Server.Server;
 
 public class ThreadToClient extends ServerThread{
@@ -34,29 +35,25 @@ public class ThreadToClient extends ServerThread{
     }
 
     private void serve() {
-        String type;
-        String content;
         try {
             System.out.println("a escuta");
-            type=(String) in.readObject();
-            content=(String) in.readObject();
+            RequestMessage rm=(RequestMessage)in.readObject();
             System.out.println("content read");
-            if (type.equals("Search")) {
+            if (rm.getType().equals("search")) {
                 System.out.println("search");
                 ToSend=new ArrayList<>();
-                server.createTask(content, id);
+                server.createTask((String) rm.getContent(), id);
                 server.notifyThreads();
                 waitforWorker();
                 System.out.println("ready");
                 Collections.sort(ToSend);
                 Collections.reverse(ToSend);
-                send("list");
                 send(ToSend);
                 System.out.println("search done");
                 verefiedNews=0;
             }
-            else if (type.equals("GetText"))
-                send(server.getText(content));
+            else if (rm.getType().equals("text"))
+                send(server.getText((String) rm.getContent()));
             // add some exception
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

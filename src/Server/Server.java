@@ -54,7 +54,7 @@ public class Server {
 
     public String getText(String content) {
         for (News_File nf :repository) {
-            if (nf.getTitle().equals(content))return nf.getTitle();
+            if (nf.getTitle().equals(content))return nf.getShowText();
         }
         return null;
     }

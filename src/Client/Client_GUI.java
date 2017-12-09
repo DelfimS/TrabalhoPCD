@@ -9,16 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 
-class Client_GUI {
+public class Client_GUI {
     private JFrame frame;
     private JTextArea File_Text;
     private DefaultListModel<String> Title_List;
     private JList Title_Table;
-    private Client client;
+    private ConnectionHandler client;
     private JTextField searchBar;
 
     public JFrame getFrame() {
@@ -33,21 +34,15 @@ class Client_GUI {
         return File_Text;
     }
 
-    {
-    }
 
     public void init(){
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                addClientWorker();
+                client=new ConnectionHandler(Client_GUI.this).init();
                 drawGUI();
             }
         });
-    }
-    private void addClientWorker(){
-        client = new Client(this).init();
-        client.execute();
     }
     private void drawGUI(){
         JFrame window = new JFrame();
@@ -88,13 +83,15 @@ class Client_GUI {
     	list.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        client.requestText(e.toString());
-
-                    }
-                });
+                client.requestText(list.getSelectedValue(),Client_GUI.this);
+                try {
+                    client.readText();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
+                }
+                File_Text.setCaretPosition(0);
             }
         });
     	tf.addKeyListener(new KeyListener() {
@@ -102,12 +99,17 @@ class Client_GUI {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_ENTER)
-                SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        System.out.println("Search Requested");client.requestSearch(searchBar.getText());
+                if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                    client.requestSearch(searchBar.getText(),Client_GUI.this);
+                    try {
+                        client.readList();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    } catch (ClassNotFoundException e1) {
+                        e1.printStackTrace();
                     }
-                });
+                }
+
             }
             @Override
             public void keyReleased(KeyEvent e) {}
@@ -115,11 +117,14 @@ class Client_GUI {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        System.out.println("Search Requested");client.requestSearch(searchBar.getText());
-                    }
-                });
+                client.requestSearch(searchBar.getText(),Client_GUI.this);
+                try {
+                    client.readList();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }

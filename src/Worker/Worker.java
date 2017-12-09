@@ -1,7 +1,7 @@
 package Worker;
 
+import DataTransferType.RequestMessage;
 import Server.Server;
-import Utilities.ErrorWindow;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -43,8 +43,9 @@ public class Worker extends Thread{
             String searchWord="";
             String text="";
             try {
-                searchWord=(String) in.readObject();
-                text=(String) in.readObject();
+                RequestMessage rm = (RequestMessage)in.readObject();
+                searchWord=rm.getType();
+                text=(String)rm.getContent();
                 out.writeObject(search(searchWord,text));
             } catch (IOException e) {
                 e.printStackTrace();

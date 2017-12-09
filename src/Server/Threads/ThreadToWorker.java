@@ -1,12 +1,13 @@
 package Server.Threads;
 
+import DataTransferType.RequestMessage;
+import Server.DataTypes.Tarefa;
+import Server.Server;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
-import Server.DataTypes.Tarefa;
-import Server.Server;
 
 public class ThreadToWorker extends ServerThread{
     private Server server;
@@ -47,8 +48,8 @@ public class ThreadToWorker extends ServerThread{
             wait();
             tarefa=server.getTask();
         }
-        send(tarefa.getRequest());
-        send(tarefa.getNews_file().toString());
+        RequestMessage rm=new RequestMessage(tarefa.getRequest(),tarefa.getNews_file().toString());
+        send(rm);
         server.addToDoneList(tarefa,(Integer)in.readObject());
     }
 

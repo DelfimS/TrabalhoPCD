@@ -16,7 +16,6 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -39,12 +38,14 @@ public class Server {
     synchronized void addThread(ServerThread thread){
         connections.add(thread);
     }
+
     public void notifyThreads(){
         for (ServerThread s :
                 connections) {
             s.notifyThread();
         }
     }
+
     public void createTask(String request,int id) {
             assert repository != null;
             for (News_File news_file : repository) {

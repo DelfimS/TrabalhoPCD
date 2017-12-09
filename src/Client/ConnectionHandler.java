@@ -1,12 +1,8 @@
 package Client;
 
-import Client.Task.GetSearchListWorker;
-import Client.Task.GetTextFromTitle;
-import Client.Task.Task;
 import DataTransferType.RequestMessage;
 import Server.Server;
 import Utilities.ErrorWindow;
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -15,7 +11,6 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ConnectionHandler {
 

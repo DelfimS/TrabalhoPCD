@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14b65f3e-0a01-4cea-bf36-75a9bbf08ac9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Client/Task/GetSearchListWorker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Client/Task/GetTextFromTitle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Client/Task/Task.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataTransferType/RequestMessage.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$2$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$3$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$4$1.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Client/Client.java" afterPath="$PROJECT_DIR$/src/Client/ConnectionHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$1.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$2.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$3.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$3.class" />
@@ -18,10 +9,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Client_GUI.java" afterPath="$PROJECT_DIR$/src/Client/Client_GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/DataTypes/News_File.java" afterPath="$PROJECT_DIR$/src/Server/DataTypes/News_File.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Server.java" afterPath="$PROJECT_DIR$/src/Server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Threads/ThreadToClient.java" afterPath="$PROJECT_DIR$/src/Server/Threads/ThreadToClient.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -538,7 +525,7 @@
       <workItem from="1512744739744" duration="17566000" />
       <workItem from="1512769898872" duration="10500000" />
       <workItem from="1512831917299" duration="9288000" />
-      <workItem from="1512850498560" duration="234000" />
+      <workItem from="1512850498560" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="fixed a problem with connection maker thread">
       <created>1512057882768</created>
@@ -568,15 +555,21 @@
       <option name="project" value="LOCAL" />
       <updated>1512777711890</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changed the client now its single threaded,added a request class">
+      <created>1512850838882</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1512850838882</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76922000" />
+    <option name="totallyTimeSpent" value="77021000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -591,7 +584,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23792094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23792094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -648,7 +641,8 @@
     <MESSAGE value="fixed a problem with connection maker thread" />
     <MESSAGE value="the server can now get if the connection is to a worker or a client" />
     <MESSAGE value="reworked almost the whole project" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked almost the whole project" />
+    <MESSAGE value="changed the client now its single threaded,added a request class" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed the client now its single threaded,added a request class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -894,6 +888,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

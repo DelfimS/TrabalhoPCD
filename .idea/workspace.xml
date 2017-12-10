@@ -2,24 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14b65f3e-0a01-4cea-bf36-75a9bbf08ac9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/ReceiverThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/SenderThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server$IOThreads.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Client/Task/Task.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$1.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$2.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$3.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$4.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Client_GUI.java" afterPath="$PROJECT_DIR$/src/Client/Client_GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/ConnectionHandler.java" afterPath="$PROJECT_DIR$/src/Client/ConnectionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Task/GetSearchListWorker.java" afterPath="$PROJECT_DIR$/src/Client/Task/GetSearchListWorker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Task/GetTextFromTitle.java" afterPath="$PROJECT_DIR$/src/Client/Task/GetTextFromTitle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Server.java" afterPath="$PROJECT_DIR$/src/Server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Threads/ThreadToClient.java" afterPath="$PROJECT_DIR$/src/Server/Threads/ThreadToClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Threads/ThreadToWorker.java" afterPath="$PROJECT_DIR$/src/Server/Threads/ThreadToWorker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Worker/Worker.java" afterPath="$PROJECT_DIR$/src/Worker/Worker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/DataTypes/News_File.java" afterPath="$PROJECT_DIR$/src/Server/DataTypes/News_File.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java" afterPath="$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +27,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -76,6 +66,29 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="News_File.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Server/DataTypes/News_File.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#918#919#0" expanded="true" />
+                <element signature="e#968#969#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tarefa.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GetSearchListWorker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/Task/GetSearchListWorker.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -102,19 +115,6 @@
                 <element signature="e#3913#3914#0" expanded="true" />
                 <element signature="e#4395#4396#0" expanded="true" />
                 <element signature="e#4508#4509#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerThread.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Server/Threads/ServerThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-              <folding>
-                <element signature="e#122#123#0" expanded="true" />
-                <element signature="e#148#149#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,16 +153,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Server_Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Server/Server_Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -210,14 +200,12 @@
         <option value="$PROJECT_DIR$/src/Server/Threads/SenderThreadWorker.java" />
         <option value="$PROJECT_DIR$/src/Server/Threads/ReceiverThreadClient.java" />
         <option value="$PROJECT_DIR$/src/Server/Threads/ReceiverThreadWorker.java" />
-        <option value="$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java" />
         <option value="$PROJECT_DIR$/src/TestMain.java" />
         <option value="$PROJECT_DIR$/src/Server/ServerUtil/File_Handler.java" />
         <option value="$PROJECT_DIR$/src/Client/Client.java" />
         <option value="$PROJECT_DIR$/src/Client/ClientWorker.java" />
         <option value="$PROJECT_DIR$/src/Client/Task.java" />
         <option value="$PROJECT_DIR$/src/DataTransferType/RequestMessage.java" />
-        <option value="$PROJECT_DIR$/src/Server/DataTypes/News_File.java" />
         <option value="$PROJECT_DIR$/src/Server/Threads/ServerThread.java" />
         <option value="$PROJECT_DIR$/src/Server/Threads/ThreadToWorker.java" />
         <option value="$PROJECT_DIR$/src/Client/Task/Task.java" />
@@ -228,6 +216,8 @@
         <option value="$PROJECT_DIR$/src/Server/Server.java" />
         <option value="$PROJECT_DIR$/src/Server/Threads/ThreadToClient.java" />
         <option value="$PROJECT_DIR$/src/Worker/Worker.java" />
+        <option value="$PROJECT_DIR$/src/Server/DataTypes/News_File.java" />
+        <option value="$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java" />
       </list>
     </option>
   </component>
@@ -295,6 +285,13 @@
               <item name="TrabalhoPCD" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrabalhoPCD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrabalhoPCD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="DataTypes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TrabalhoPCD" type="b2602c69:ProjectViewProjectNode" />
@@ -609,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512857499599</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="the client is now multi threaded,the worker tries to recconnect on failure">
+      <created>1512948349502</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1512948349502</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -692,7 +696,8 @@
     <MESSAGE value="changed the client now its single threaded,added a request class" />
     <MESSAGE value="Changed the way the server communicates with worker now it uses a RequestMessage" />
     <MESSAGE value="Jlist listener updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jlist listener updated" />
+    <MESSAGE value="the client is now multi threaded,the worker tries to recconnect on failure" />
+    <option name="LAST_COMMIT_MESSAGE" value="the client is now multi threaded,the worker tries to recconnect on failure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -901,25 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/DataTypes/News_File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#854#855#0" expanded="false" />
-            <element signature="e#897#898#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Worker/Worker_Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1063,6 +1049,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/DataTypes/News_File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#968#969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/DataTypes/Tarefa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding />
         </state>
       </provider>

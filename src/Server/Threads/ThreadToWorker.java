@@ -49,6 +49,7 @@ public class ThreadToWorker extends ServerThread{
         }
         RequestMessage rm=new RequestMessage(tarefa.getRequest(),tarefa.getNews_file().toString());
         send(rm);
+        System.out.println("task enviada"+this.getId());
         server.addToDoneList(tarefa,(Integer)in.readObject());
     }
 

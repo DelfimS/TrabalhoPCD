@@ -1,6 +1,7 @@
 package Client;
 
-import DataTransferType.RequestMessage;
+import Client.Task.GetSearchListWorker;
+import Client.Task.GetTextFromTitle;
 import Server.Server;
 import Utilities.ErrorWindow;
 
@@ -9,8 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConnectionHandler {
 
@@ -56,45 +55,12 @@ public class ConnectionHandler {
         out.writeObject("Client");
     }
 
-    synchronized void requestSearch(String search,Client_GUI GUI){
-        try {
-            GUI.getTitle_List().clear();
-            RequestMessage rm=new RequestMessage("search",search);
-            out.writeObject(rm);
-            out.flush();
-            //new GetSearchListWorker(this).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-            ErrorWindow.init("Falha no envio",GUI.getFrame());
-        }
+    synchronized void requestSearch(String search){
+        new GetSearchListWorker(this,search).execute();
     }
 
-    void requestText(String title, Client_GUI GUI) {
-        try {
-            String [] strings=title.split("=>");
-            RequestMessage rm=new RequestMessage("text",strings[1]);
-            out.writeObject(rm);
-            out.flush();
-            //new GetTextFromTitle(this).execute();
-        } catch (IOException e) {
-            ErrorWindow.init("Falha no envio", GUI.getFrame());
-        }
+    void requestText(String title) {
+        new GetTextFromTitle(this,title).execute();
     }
 
-    protected void readText() throws IOException, ClassNotFoundException {
-        String s=(String)this.getIn().readObject();
-        this.getGUI().getFile_Text().setText(s);
-    }
-
-    protected List<String> readList() throws IOException, ClassNotFoundException {
-        ArrayList<String> list=(ArrayList<String>)this.getIn().readObject();
-        this.getGUI().getTitle_List().clear();
-        boolean b= this.getGUI().getTitle_List().isEmpty();
-        for (String str:list) {
-            System.out.println(str);
-            this.getGUI().getTitle_List().addElement(str);
-        }
-        System.out.println(list.size());
-        return list;
-    }
 }

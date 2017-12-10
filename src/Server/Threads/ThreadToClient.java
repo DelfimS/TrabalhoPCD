@@ -17,6 +17,7 @@ public class ThreadToClient extends ServerThread{
     Socket socket;
     Server server;
     ArrayList<String> ToSend=null;
+    boolean interrupted=false;
     int verefiedNews=0;
 
     public ThreadToClient(Server server,Socket socket,ObjectInputStream in,ObjectOutputStream out,int id){
@@ -29,7 +30,7 @@ public class ThreadToClient extends ServerThread{
 
     @Override
     public void run() {
-        while (true){
+        while (!interrupted){
             serve();
         }
     }
@@ -55,6 +56,14 @@ public class ThreadToClient extends ServerThread{
                 send(server.getText((String) rm.getContent()));
             // add some exception
         } catch (IOException | ClassNotFoundException e) {
+            this.interrupt();
+            interrupted=true;
+            server.removeThread(this);
+            try {
+                socket.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             e.printStackTrace();
         }
     }

@@ -40,8 +40,7 @@ public class Server {
     }
 
     public void notifyThreads(){
-        for (ServerThread s :
-                connections) {
+        for (ServerThread s : connections) {
             s.notifyThread();
         }
     }
@@ -89,17 +88,21 @@ public class Server {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                while (!interrupted) {
+                if (s!=null) {
+                    while (!interrupted) {
 
-                    System.out.println("ServerSocket criado " + s.toString());
-                    try {
-                        socket = s.accept();
-                        System.out.println("Cliente ligado " + socket.toString());
-                        createServerThreads(socket,id);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        System.out.println("ServerSocket criado " + s.toString());
+                        try {
+                            socket = s.accept();
+                            System.out.println("Cliente ligado " + socket.toString());
+                            createServerThreads(socket,id);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        id++;
                     }
-                    id++;
+                }else{
+                    System.out.println("ServerSocket creation error");
                 }
 
             }

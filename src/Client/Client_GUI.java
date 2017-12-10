@@ -9,8 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.util.ArrayList;
 
 
 
@@ -21,9 +19,19 @@ public class Client_GUI {
     private JList Title_Table;
     private ConnectionHandler client;
     private JTextField searchBar;
+    private boolean searchLock=true;
+    private boolean getTextLock=true;
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    public void setSearchLock(boolean searchLock) {
+        this.searchLock = searchLock;
+    }
+
+    public void setGetTextLock(boolean getTextLock) {
+        this.getTextLock = getTextLock;
     }
 
     public DefaultListModel<String> getTitle_List() {
@@ -84,15 +92,14 @@ public class Client_GUI {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (Client_GUI.this.Title_Table.getSelectedValue()!=null) {
-                    client.requestText(Client_GUI.this.Title_Table.getSelectedValue().toString(),Client_GUI.this);
-                    try {
-                        client.readText();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    } catch (ClassNotFoundException e1) {
-                        e1.printStackTrace();
+                    if (getTextLock) {
+                        setGetTextLock(false);
+                        SwingUtilities.invokeLater(new Runnable() {
+                            public void run() {
+                                client.requestText(Client_GUI.this.Title_Table.getSelectedValue().toString());
+                            }
+                        });
                     }
-                    File_Text.setCaretPosition(0);
                 }
             }
         });
@@ -102,13 +109,13 @@ public class Client_GUI {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_ENTER){
-                    client.requestSearch(searchBar.getText(),Client_GUI.this);
-                    try {
-                        client.readList();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    } catch (ClassNotFoundException e1) {
-                        e1.printStackTrace();
+                    if (searchLock) {
+                        setSearchLock(false);
+                        SwingUtilities.invokeLater(new Runnable() {
+                            public void run() {
+                                client.requestSearch(Client_GUI.this.searchBar.getText());
+                            }
+                        });
                     }
                 }
 
@@ -119,30 +126,17 @@ public class Client_GUI {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                client.requestSearch(searchBar.getText(),Client_GUI.this);
-                try {
-                    client.readList();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
+                if (searchLock) {
+                    setSearchLock(false);
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            client.requestSearch(Client_GUI.this.searchBar.getText());
+                        }
+                    });
                 }
             }
         });
     }
 
-    private void setFile_Text(String selected) {
-            File_Text.setText(selected);
-            File_Text.append("\n\n");
-            File_Text.append(selected);
-            File_Text.setCaretPosition(0);
-    }
-
-    
-    private void setTitle_List(ArrayList<String> list) {
-            for (String nf:list) {
-    			Title_List.addElement(nf);
-    		}
-    }
 
 }

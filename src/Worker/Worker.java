@@ -20,7 +20,7 @@ public class Worker extends Thread{
         try {
             connectToServer();
         } catch (IOException e) {
-            e.printStackTrace();
+            tryReconnect();
         }
         return this;
     }
@@ -35,20 +35,22 @@ public class Worker extends Thread{
         this.in=new ObjectInputStream(socket.getInputStream());
         out.writeObject("Worker");
     }
-
+    private void tryReconnect(){
+        init();
+    }
 
     @Override
     public void run() {
+        String searchWord;
+        String text;
         while (true) {
-            String searchWord="";
-            String text="";
             try {
                 RequestMessage rm = (RequestMessage)in.readObject();
                 searchWord=rm.getType();
                 text=(String)rm.getContent();
                 out.writeObject(search(searchWord,text));
             } catch (IOException e) {
-                e.printStackTrace();
+                tryReconnect();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -64,4 +66,5 @@ public class Worker extends Thread{
         sc.close();
         return count;
     }
+
 }

@@ -1,17 +1,17 @@
 package Server.Threads;
 
+import DataTransferType.RequestMessage;
+import Server.Server;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import DataTransferType.RequestMessage;
-import Server.Server;
+import java.util.Comparator;
 
 public class ThreadToClient extends ServerThread{
-    int id;
     ObjectInputStream in;
     ObjectOutputStream out;
     Socket socket;
@@ -20,7 +20,7 @@ public class ThreadToClient extends ServerThread{
     int verefiedNews=0;
 
     public ThreadToClient(Server server,Socket socket,ObjectInputStream in,ObjectOutputStream out,int id){
-        this.id=id;
+        super(id);
         this.server = server;
         this.in=in;
         this.out=out;
@@ -46,8 +46,7 @@ public class ThreadToClient extends ServerThread{
                 server.notifyThreads();
                 waitforWorker();
                 System.out.println("ready");
-                Collections.sort(ToSend);
-                Collections.reverse(ToSend);
+                sortList(ToSend);
                 send(ToSend);
                 System.out.println("search done");
                 verefiedNews=0;
@@ -58,6 +57,19 @@ public class ThreadToClient extends ServerThread{
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void sortList(ArrayList<String> toSend) {
+        Collections.sort(toSend, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                String[] str1=o1.split("=>");
+                String[] str2=o2.split("=>");
+                int num1=Integer.parseInt(str1[0]);
+                int num2=Integer.parseInt(str2[0]);
+                return num2-num1;
+            }
+        });
     }
 
     private synchronized void waitforWorker() {
@@ -87,7 +99,7 @@ public class ThreadToClient extends ServerThread{
     public synchronized void addToSend(String news_file, int num) {
         if(num>0)
         ToSend.add(num+"=>"+news_file);
-        verefiedNews++;
+        IncreaseVerefiedNews();
         if (verefiedNews==server.getNewsListSize()){
             notifyThread();
         }

@@ -14,14 +14,13 @@ public class ThreadToWorker extends ServerThread{
     ObjectInputStream in;
     ObjectOutputStream out;
     Socket socket;
-    private int id;
 
     public ThreadToWorker(Server server,Socket socket,ObjectInputStream in,ObjectOutputStream out,int id){
+        super(id);
         this.server = server;
         this.in=in;
         this.out=out;
         this.socket=socket;
-        this.id = id;
     }
 
     private void send(Object object){

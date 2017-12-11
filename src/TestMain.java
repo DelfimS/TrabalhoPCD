@@ -4,8 +4,8 @@ import Worker.Worker_Main;
 
 public class TestMain {
     public static void main(String[] args) {
-        Server_Main.main(null);
-        Client_Main.main(null);
-        Worker_Main.main(null);
+        Server_Main.main(new String[]{"..\\TrabalhoPCD\\news29out"});
+        Client_Main.main(new String[]{null});
+        Worker_Main.main(new String[]{null});
     }
 }

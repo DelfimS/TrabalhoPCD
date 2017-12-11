@@ -17,7 +17,6 @@ public class GetTextFromTitle extends SwingWorker<List<String>,String> {
 
     @Override
     protected void process(List<String> chunks) {
-        connectionHandler.getGUI().getFile_Text().setText("");
         connectionHandler.getGUI().getFile_Text().setText(chunks.get(0));
         connectionHandler.getGUI().getFile_Text().setCaretPosition(0);
     }
@@ -29,8 +28,11 @@ public class GetTextFromTitle extends SwingWorker<List<String>,String> {
         RequestMessage rm=new RequestMessage("text",strings[1]);
         connectionHandler.getOut().writeObject(rm);
         connectionHandler.getOut().flush();
-        String s=(String)connectionHandler.getIn().readObject();
-        publish(s);
+        String s=connectionHandler.getIn().readObject().toString();
+        if (s!=null)
+            publish(s);
+        else
+            publish("Nao encontrado");
         connectionHandler.getGUI().setGetTextLock(true);
         return null;
     }

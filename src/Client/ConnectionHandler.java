@@ -16,6 +16,7 @@ public class ConnectionHandler {
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
+    private InetAddress IA;
 
     public ObjectOutputStream getOut() {
         return out;
@@ -35,8 +36,9 @@ public class ConnectionHandler {
         GUI = gui;
     }
 
-    protected ConnectionHandler init(){
+    protected ConnectionHandler init(String ia){
         try {
+            this.IA =InetAddress.getByName(ia);
             connectToServer();
         } catch (IOException e) {
             ErrorWindow.init("Algo correu mal a ligar ao server",GUI.getFrame());
@@ -44,11 +46,10 @@ public class ConnectionHandler {
         return this;
     }
     private void connectToServer() throws IOException {
-        InetAddress adress=InetAddress.getByName(null);
         try {
-            this.socket=new Socket(adress,Server.PORT);
+            this.socket=new Socket(IA,Server.PORT);
         } catch (IOException e) {
-            System.out.println("Falha na criacao do socket");
+            ErrorWindow.init("Falha na criacao do socket",this.GUI.getFrame());
         }
         this.out=new ObjectOutputStream(socket.getOutputStream());
         this.in=new ObjectInputStream(socket.getInputStream());

@@ -11,9 +11,9 @@ import java.net.Socket;
 
 public class ThreadToWorker extends ServerThread{
     private Server server;
-    ObjectInputStream in;
-    ObjectOutputStream out;
-    Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
+    private Socket socket;
 
     public ThreadToWorker(Server server,Socket socket,ObjectInputStream in,ObjectOutputStream out,int id){
         super(id);
@@ -36,7 +36,13 @@ public class ThreadToWorker extends ServerThread{
             try {
                 serve();
             } catch (InterruptedException | IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+                this.interrupt();
+                server.removeThreadWorker(this);
+                try {
+                    socket.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         }
     }
@@ -49,12 +55,11 @@ public class ThreadToWorker extends ServerThread{
         }
         RequestMessage rm=new RequestMessage(tarefa.getRequest(),tarefa.getNews_file().toString());
         send(rm);
-        System.out.println("task enviada"+this.getId());
         server.addToDoneList(tarefa,(Integer)in.readObject());
     }
 
     @Override
     public synchronized void notifyThread(){
-        notifyAll();
+        notify();
     }
 }

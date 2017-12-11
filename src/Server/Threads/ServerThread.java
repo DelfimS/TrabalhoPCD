@@ -3,8 +3,8 @@ package Server.Threads;
 public abstract class ServerThread extends Thread {
     int id;
 
-    public ServerThread(int id) {
-        this.id=id;
+    ServerThread(int id) {
+        this.id = id;
     }
 
     public int getIdentity() {
@@ -12,4 +12,5 @@ public abstract class ServerThread extends Thread {
     }
 
     public abstract void notifyThread();
+
 }

@@ -14,10 +14,12 @@ public class Worker extends Thread{
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
+    private InetAddress IA;
 
 
-    Worker init(){
+    Worker init(String ia){
         try {
+            this.IA=InetAddress.getByName(ia);
             connectToServer();
         } catch (IOException e) {
             tryReconnect();
@@ -25,9 +27,8 @@ public class Worker extends Thread{
         return this;
     }
     private void connectToServer() throws IOException {
-        InetAddress adress=InetAddress.getByName(null);
         try {
-            this.socket=new Socket(adress,Server.PORT);
+            this.socket=new Socket(IA,Server.PORT);
         } catch (IOException e) {
             System.out.println("Falha na criacao do socket");
         }
@@ -36,7 +37,11 @@ public class Worker extends Thread{
         out.writeObject("Worker");
     }
     private void tryReconnect(){
-        init();
+        try {
+            connectToServer();
+        } catch (IOException e) {
+            System.out.println("Conexao Perdida");
+        }
     }
 
     @Override
@@ -47,7 +52,7 @@ public class Worker extends Thread{
             try {
                 RequestMessage rm = (RequestMessage)in.readObject();
                 searchWord=rm.getType();
-                text=(String)rm.getContent();
+                text= rm.getContent();
                 out.writeObject(search(searchWord,text));
             } catch (IOException e) {
                 tryReconnect();

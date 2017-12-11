@@ -22,7 +22,7 @@ public class Client_GUI {
     private boolean searchLock=true;
     private boolean getTextLock=true;
 
-    public JFrame getFrame() {
+    JFrame getFrame() {
         return frame;
     }
 
@@ -43,11 +43,11 @@ public class Client_GUI {
     }
 
 
-    public void init(){
+    void init(String ia){
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                client=new ConnectionHandler(Client_GUI.this).init();
+                client=new ConnectionHandler(Client_GUI.this).init(ia);
                 drawGUI();
             }
         });
@@ -58,6 +58,7 @@ public class Client_GUI {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setSize(1000, 500);
         addElements(window);
+        frame.setLocationRelativeTo(null);
         window.setVisible(true);
     }
 

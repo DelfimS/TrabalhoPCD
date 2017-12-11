@@ -21,27 +21,38 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Server {
     public static final int PORT = 8080;
-    private final ArrayList<News_File> repository = File_Handler.getFiles("..\\TrabalhoPCD\\news29out");
-    private ArrayList<ServerThread> connections = new ArrayList<>();
+    private final ArrayList<News_File> repository;
+    private ArrayList<ServerThread> workers = new ArrayList<>();
+    private ArrayList<ThreadToClient> clients = new ArrayList<>();
     private BlockingQueue<Tarefa> tasks= new LinkedBlockingQueue<>();
     private Server server = this;
+
+    Server(String path){
+        this.repository=File_Handler.getFiles(path);
+    }
 
     void init() {
         ConnectionMaker cm = new ConnectionMaker();
         cm.start();
     }
 
-    public synchronized void removeThread(Thread thread) {
-        connections.remove(thread);
-    }
+    public synchronized void removeThreadClient(Thread thread) {clients.remove(thread);}
+    public synchronized void removeThreadWorker(Thread thread){workers.remove(thread);}
 
-    private synchronized void addThread(ServerThread thread){
-        connections.add(thread);
+    private void addClient(ThreadToClient thread){
+        clients.add(thread);
     }
+    private void addWorker(ThreadToWorker thread){workers.add(thread);}
 
-    public void notifyThreads(){
-        for (ServerThread s : connections) {
+    public void notifyWorkers(){
+        for (ServerThread s : workers) {
             s.notifyThread();
+        }
+    }
+
+    public void notifyById(int id){
+        for (ServerThread s : clients) {
+            if (s.getIdentity()==id)s.notifyThread();
         }
     }
 
@@ -53,8 +64,10 @@ public class Server {
     }
 
     public String getText(String content) {
-        for (News_File nf :repository) {
-            if (nf.getTitle().equals(content))return nf.getShowText();
+        if (repository != null) {
+            for (News_File nf :repository) {
+                if (nf.getTitle().equals(content))return nf.getShowText();
+            }
         }
         return null;
     }
@@ -68,7 +81,7 @@ public class Server {
     }
 
     public void addToDoneList(Tarefa t,int num){
-        for (ServerThread thread : connections) {
+        for (ServerThread thread : clients) {
             if (t.getRequesterId()==thread.getIdentity()){
                 ((ThreadToClient)thread).addToSend(t.getNews_file().getTitle(),num);
                 break;
@@ -108,9 +121,8 @@ public class Server {
             }
 
             private void createServerThreads(Socket socket,int id) {
-                ServerThread st;
-                ObjectOutputStream out=null;
-                ObjectInputStream in=null;
+                ObjectOutputStream out;
+                ObjectInputStream in;
                 String type;
                 try {
                     out=new ObjectOutputStream(socket.getOutputStream());
@@ -121,16 +133,18 @@ public class Server {
                     return;
                 }
                 try {
-                    if (type.equals("Client"))
-                    st = new ThreadToClient(server,socket,in,out,id);
-                    else if (type.equals("Worker"))
-                        st=new ThreadToWorker(server,socket,in,out,id);
-                    else return;
+                    if (type.equals("Client")) {
+                        ThreadToClient threadToClient=new ThreadToClient(server, socket, in, out, id);
+                        addClient(threadToClient);
+                        threadToClient.start();
+                    }
+                    else if (type.equals("Worker")){
+                        ThreadToWorker threadToWorker=new ThreadToWorker(server, socket, in, out, id);
+                        addWorker(threadToWorker);
+                        threadToWorker.start();
+                    }
                 } catch (IllegalArgumentException e) {
-                    return;
                 }
-                addThread(st);
-                st.start();
             }
 
     }

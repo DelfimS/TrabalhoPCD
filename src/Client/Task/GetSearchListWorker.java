@@ -20,27 +20,23 @@ public class GetSearchListWorker extends SwingWorker<List<String>,String> {
     @Override
     protected List<String> doInBackground() throws Exception {
         connectionHandler.getGUI().getTitle_List().clear();
-        //connectionHandler.getGUI().getTitle_List().addElement("A Procurar ...");
-        //connectionHandler.getGUI().getTitle_List().clear();
+        connectionHandler.getGUI().getTitle_List().addElement("A Procurar ...");
         RequestMessage rm=new RequestMessage("search",search);
         connectionHandler.getOut().writeObject(rm);
         connectionHandler.getOut().flush();
-        ArrayList<String> list=(ArrayList<String>)connectionHandler.getIn().readObject();
+        ArrayList<String> list=(ArrayList<String>) connectionHandler.getIn().readObject();
         connectionHandler.getGUI().getTitle_List().clear();
         for (String str:list) {
-            System.out.println(str);
             publish(str);
         }
-        System.out.println(list.size());
         connectionHandler.getGUI().setSearchLock(true);
-        return list;
+        return null;
     }
 
     @Override
     protected void process(List<String> chunks) {
         for (String str : chunks) {
             connectionHandler.getGUI().getTitle_List().addElement(str);
-            System.out.println(str);
         }
     }
 }

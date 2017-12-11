@@ -2,30 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14b65f3e-0a01-4cea-bf36-75a9bbf08ac9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$2.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$3.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$4.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server$ConnectionMaker.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server$ConnectionMaker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server_Main.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Server/Server_Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Worker/Worker.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Worker/Worker.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TestMain.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$1.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_GUI$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_Main.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Client/Client_Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Utilities/ErrorWindow.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Utilities/ErrorWindow.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrabalhoPCD/Worker/Worker_Main.class" afterPath="$PROJECT_DIR$/out/production/TrabalhoPCD/Worker/Worker_Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Client_GUI.java" afterPath="$PROJECT_DIR$/src/Client/Client_GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Client_Main.java" afterPath="$PROJECT_DIR$/src/Client/Client_Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/ConnectionHandler.java" afterPath="$PROJECT_DIR$/src/Client/ConnectionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Task/GetSearchListWorker.java" afterPath="$PROJECT_DIR$/src/Client/Task/GetSearchListWorker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client/Task/GetTextFromTitle.java" afterPath="$PROJECT_DIR$/src/Client/Task/GetTextFromTitle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataTransferType/RequestMessage.java" afterPath="$PROJECT_DIR$/src/DataTransferType/RequestMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Server.java" afterPath="$PROJECT_DIR$/src/Server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Server_Main.java" afterPath="$PROJECT_DIR$/src/Server/Server_Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Threads/ServerThread.java" afterPath="$PROJECT_DIR$/src/Server/Threads/ServerThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Threads/ThreadToClient.java" afterPath="$PROJECT_DIR$/src/Server/Threads/ThreadToClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Threads/ThreadToWorker.java" afterPath="$PROJECT_DIR$/src/Server/Threads/ThreadToWorker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestMain.java" afterPath="$PROJECT_DIR$/src/TestMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utilities/ErrorWindow.java" afterPath="$PROJECT_DIR$/src/Utilities/ErrorWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Worker/Worker.java" afterPath="$PROJECT_DIR$/src/Worker/Worker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Worker/Worker_Main.java" afterPath="$PROJECT_DIR$/src/Worker/Worker_Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ConnectionHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ConnectionHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Client/ConnectionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+            <state relative-caret-position="357">
+              <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -66,7 +49,7 @@
       <file leaf-file-name="Client_GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/Client_GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
+            <state relative-caret-position="347">
               <caret line="49" column="69" lean-forward="false" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
               <folding />
             </state>
@@ -78,16 +61,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
               <caret line="42" column="47" lean-forward="false" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestMain.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/TestMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -212,10 +185,10 @@
         <option value="$PROJECT_DIR$/src/Server/Threads/ThreadToWorker.java" />
         <option value="$PROJECT_DIR$/src/Client/Client_Main.java" />
         <option value="$PROJECT_DIR$/src/Worker/Worker.java" />
-        <option value="$PROJECT_DIR$/src/Client/ConnectionHandler.java" />
         <option value="$PROJECT_DIR$/src/Client/Client_GUI.java" />
         <option value="$PROJECT_DIR$/src/Worker/Worker_Main.java" />
         <option value="$PROJECT_DIR$/src/TestMain.java" />
+        <option value="$PROJECT_DIR$/src/Client/ConnectionHandler.java" />
       </list>
     </option>
   </component>
@@ -264,6 +237,18 @@
               <item name="TrabalhoPCD" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrabalhoPCD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrabalhoPCD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DataTransferType" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrabalhoPCD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrabalhoPCD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -573,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512948707804</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Done">
+      <created>1512974377262</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1512974377262</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -658,7 +650,8 @@
     <MESSAGE value="Jlist listener updated" />
     <MESSAGE value="the client is now multi threaded,the worker tries to recconnect on failure" />
     <MESSAGE value="optimized and cleaned DataTypes package classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimized and cleaned DataTypes package classes" />
+    <MESSAGE value="Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1034,30 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Worker/Worker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="42" column="47" lean-forward="false" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/ConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/Client_GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="49" column="69" lean-forward="false" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Worker/Worker_Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1084,6 +1053,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Worker/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="42" column="47" lean-forward="false" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/Client_GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="49" column="69" lean-forward="false" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/ConnectionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
           <folding />
         </state>
       </provider>

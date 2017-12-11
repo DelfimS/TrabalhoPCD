@@ -42,6 +42,7 @@ public class ConnectionHandler {
             connectToServer();
         } catch (IOException e) {
             ErrorWindow.init("Algo correu mal a ligar ao server",GUI.getFrame());
+            GUI.getFrame().dispose();
         }
         return this;
     }
@@ -50,6 +51,7 @@ public class ConnectionHandler {
             this.socket=new Socket(IA,Server.PORT);
         } catch (IOException e) {
             ErrorWindow.init("Falha na criacao do socket",this.GUI.getFrame());
+            GUI.getFrame().dispose();
         }
         this.out=new ObjectOutputStream(socket.getOutputStream());
         this.in=new ObjectInputStream(socket.getInputStream());
